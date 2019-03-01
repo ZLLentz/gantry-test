@@ -906,10 +906,6 @@ External Setpoint Generation:
 					<Type>BOOL</Type>
 				</Var>
 				<Var>
-					<Name>MAIN.bLimBwd2</Name>
-					<Type>BOOL</Type>
-				</Var>
-				<Var>
 					<Name>MAIN.Axis1.NcToPlc</Name>
 					<Type GUID="{6A65C767-34E5-42BF-AD87-E1A503EAC7BE}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
 					<SubVar>
@@ -1007,6 +1003,18 @@ External Setpoint Generation:
 						</Comment>
 					</SubVar>
 				</Var>
+				<Var>
+					<Name>MAIN.bLimBwd2</Name>
+					<Type>BOOL</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.nRawEnc1</Name>
+					<Type>ULINT</Type>
+				</Var>
+				<Var>
+					<Name>MAIN.nRawEnc2</Name>
+					<Type>ULINT</Type>
+				</Var>
 			</Vars>
 			<Vars VarGrpType="2">
 				<Name>PlcTask Outputs</Name>
@@ -1033,6 +1041,10 @@ External Setpoint Generation:
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 3 (EL7041-1000)">
 				<Link VarA="PlcTask Inputs^MAIN.bLimBwd2" VarB="STM Status^Status^Digital input 2"/>
 				<Link VarA="PlcTask Inputs^MAIN.bLimFwd2" VarB="STM Status^Status^Digital input 1"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 4 (EL5042)">
+				<Link VarA="PlcTask Inputs^MAIN.nRawEnc1" VarB="FB Inputs Channel 1^Position"/>
+				<Link VarA="PlcTask Inputs^MAIN.nRawEnc2" VarB="FB Inputs Channel 2^Position"/>
 			</OwnerB>
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 5 (EL1004)">
 				<Link VarA="PlcTask Inputs^MAIN.bSTO1" VarB="Channel 1^Input"/>

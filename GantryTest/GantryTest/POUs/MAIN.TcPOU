@@ -4,6 +4,8 @@
     <Declaration><![CDATA[PROGRAM MAIN
 VAR
 	Axis1: AXIS_REF;
+	bEna1: BOOL;
+	bEna2: BOOL;
 	bSTO1 AT %I*: BOOL;
 	bSTO2 AT %I*: BOOL;
 	fbPower1: MC_POWER;
@@ -13,21 +15,28 @@ VAR
 	fbPower2: MC_POWER;
 	bLimFwd2 AT %I*: BOOL;
 	bLimBwd2 AT %I*: BOOL;
+	nRawEnc1 AT %I*: ULINT;
+	nRawEnc2 AT %I*: ULINT;
+	nGantryOffset: LINT;
+	nGantryErr: LINT;
+	nAbsGantryErr: ULINT;
 END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[fbPower1(Axis:=Axis1,
-	Enable:=bSTO1 AND bSTO2,
+	Enable:=bSTO1 AND bSTO2 AND bEna1,
 	Enable_Positive:=bLimFwd1,
 	Enable_Negative:=bLimBwd1);
 fbPower2(Axis:=Axis2,
-	Enable:=bSTO1 AND bSTO2,
+	Enable:=bSTO1 AND bSTO2 AND bEna2,
 	Enable_Positive:=bLimFwd2,
 	Enable_Negative:=bLimBwd2);
-]]></ST>
+nGantryErr := nRawEnc2 - nRawEnc1 + nGantryOffset;
+nAbsGantryErr := ABS(nGantryErr);]]></ST>
     </Implementation>
     <LineIds Name="MAIN">
       <LineId Id="14" Count="7" />
+      <LineId Id="43" Count="0" />
       <LineId Id="2" Count="0" />
     </LineIds>
   </POU>
